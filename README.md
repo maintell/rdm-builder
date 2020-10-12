@@ -1,6 +1,6 @@
 ![CI for redis desktop manager](https://github.com/FuckDoctors/rdm-builder/workflows/CI%20for%20redis%20desktop%20manager/badge.svg)
 
-# rdm-builder
+# rdm-builder1
 
 Redis Desktop Manager Builder for windows and macOS
 
