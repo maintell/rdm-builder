@@ -199,6 +199,7 @@ jobs:
         asset_content_type: application/vnd.microsoft.portable-executable
 
   build_on_osx:
+    if: github.event == 'push123'
     needs: create_release
     runs-on: macos-latest
 
