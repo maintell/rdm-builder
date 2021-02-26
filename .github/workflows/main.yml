@@ -77,7 +77,14 @@ jobs:
     runs-on: windows-latest
 
     # Steps represent a sequence of tasks that will be executed as part of the job
-    steps:
+    steps:    
+    - name: Daily Version
+      id: dailyversion
+      uses: fregante/daily-version-action@v1.2.1
+      with:
+        prefix: v
+        # optional
+        
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - uses: actions/checkout@v2
       with:
@@ -153,7 +160,7 @@ jobs:
       env:
         vc_arch: ${{ matrix.msvc_arch }}
       run: |
-        python rdm\build\utils\set_version.py ${{ env.VERSION }} > rdm\src\version.h
+        python rdm\build\utils\set_version.py ${{steps.dailyversion.outputs.version}} > rdm\src\version.h
         cd rdm\src
         call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Auxiliary\Build\vcvarsall.bat" %vc_arch%
         qmake rdm.pro CONFIG-=debug
